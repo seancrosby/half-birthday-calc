@@ -1,0 +1,35 @@
+{
+  "name": "@seancrosby/half-birthday-calc",
+  "version": "1.0.0",
+  "description": "TypeScript library for computing half birthdays",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seancrosby/half-birthday-calc.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "birthday",
+    "half-birthday",
+    "leap-year"
+  ],
+  "author": "seancrosby",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
