@@ -1,6 +1,7 @@
 {
   "name": "@seancrosby/half-birthday-calc",
   "version": "1.0.0",
+  "type": "module",
   "description": "TypeScript library for computing half birthdays",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

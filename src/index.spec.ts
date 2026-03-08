@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getTraditionalHalfBirthday, getAccurateHalfBirthday, isLeapYear } from './index';
+import { getTraditionalHalfBirthday, getAccurateHalfBirthday, isLeapYear } from './index.js';
 
 describe('Half Birthday Library', () => {
   describe('isLeapYear', () => {
