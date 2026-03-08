@@ -8,14 +8,7 @@ A TypeScript library for calculating somebody's half birthday.
 
 ## Installation
 
-### From GitHub Packages
-To install this library from the GitHub Package Registry, you first need to configure npm to use the GitHub Packages registry for the `@seancrosby` scope. Create or update your `.npmrc` file:
-
-```text
-@seancrosby:registry=https://npm.pkg.github.com
-```
-
-Then install the package:
+Install the package using npm:
 ```bash
 npm install @seancrosby/half-birthday-calc
 ```
@@ -23,7 +16,6 @@ npm install @seancrosby/half-birthday-calc
 ## Usage
 
 ### In an HTML Page (using a CDN like unpkg)
-> Note: For GitHub Packages, CDN access might differ. If published to npm, use:
 ```html
 <script type="module">
   import { getTraditionalHalfBirthday, getAccurateHalfBirthday } from 'https://unpkg.com/@seancrosby/half-birthday-calc/dist/index.js';
