@@ -27,6 +27,17 @@ describe('Half Birthday Library', () => {
       }
     });
 
+    it('calculates September 15, 2026 for a March 15, 2026 birthday', () => {
+      const bday = new Date(Date.UTC(2026, 2, 15)); // March 15
+      const half = getTraditionalHalfBirthday(bday);
+      expect(half).toBeInstanceOf(Date);
+      if (half instanceof Date) {
+        expect(half.getUTCFullYear()).toBe(2026);
+        expect(half.getUTCMonth()).toBe(8); // September
+        expect(half.getUTCDate()).toBe(15);
+      }
+    });
+
     it('returns "none" for Aug 29 in a non-leap year cycle', () => {
       // Aug 29 2022 -> Feb 29 2023 (non-leap) -> none
       const bday = new Date(Date.UTC(2022, 7, 29));
