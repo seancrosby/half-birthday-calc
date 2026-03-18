@@ -17,21 +17,22 @@ export function getTraditionalHalfBirthday(birthday: Date): Date | "none" {
   const day = birthday.getUTCDate();
   const year = birthday.getUTCFullYear();
 
-  // Special Case: Feb 29 birthday
+  // Special Case: Feb 29 birthday always returns "none" per mandate
   if (month === 1 && day === 29) {
     return "none";
   }
 
-  // Special Case: Aug 29 birthday in non-leap year (next Feb is non-leap)
-  if (month === 7 && day === 29) {
-    const nextFebYear = year + 1;
-    if (!isLeapYear(nextFebYear)) {
-      return "none";
-    }
+  // Calculate target month (6 months later)
+  const targetMonth = (month + 6) % 12;
+  const result = new Date(Date.UTC(year, month + 6, day));
+
+  // If the month of the result doesn't match our target, it means the day overflowed
+  // (e.g., Aug 30 -> Feb 30 becomes March 1 or 2)
+  if (result.getUTCMonth() !== targetMonth) {
+    return "none";
   }
 
-  // General Case: Add 6 months
-  return new Date(Date.UTC(year, month + 6, day));
+  return result;
 }
 
 /**

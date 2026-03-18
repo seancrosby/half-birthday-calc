@@ -27,6 +27,17 @@ describe('Half Birthday Library', () => {
       }
     });
 
+    it('calculates March 15, 2026 as September 15, 2026', () => {
+      const bday = new Date(Date.UTC(2026, 2, 15)); // March 15
+      const half = getTraditionalHalfBirthday(bday);
+      expect(half).toBeInstanceOf(Date);
+      if (half instanceof Date) {
+        expect(half.getUTCMonth()).toBe(8); // September
+        expect(half.getUTCDate()).toBe(15);
+        expect(half.getUTCFullYear()).toBe(2026);
+      }
+    });
+
     it('returns "none" for Aug 29 in a non-leap year cycle', () => {
       // Aug 29 2022 -> Feb 29 2023 (non-leap) -> none
       const bday = new Date(Date.UTC(2022, 7, 29));
@@ -45,6 +56,22 @@ describe('Half Birthday Library', () => {
       const bday = new Date(Date.UTC(2024, 1, 29));
       const half = getTraditionalHalfBirthday(bday);
       expect(half).toBe("none");
+    });
+
+    it('returns "none" for dates that overflow when adding 6 months', () => {
+      const bday30 = new Date(Date.UTC(2023, 7, 30)); // Aug 30
+      const bday31 = new Date(Date.UTC(2023, 7, 31)); // Aug 31
+      const bdayOct = new Date(Date.UTC(2023, 9, 31)); // Oct 31
+      const bdayMar = new Date(Date.UTC(2023, 2, 31)); // Mar 31
+      const bdayMay = new Date(Date.UTC(2023, 4, 31)); // May 31
+      const bdayDec = new Date(Date.UTC(2023, 11, 31)); // Dec 31
+
+      expect(getTraditionalHalfBirthday(bday30)).toBe("none");
+      expect(getTraditionalHalfBirthday(bday31)).toBe("none");
+      expect(getTraditionalHalfBirthday(bdayOct)).toBe("none");
+      expect(getTraditionalHalfBirthday(bdayMar)).toBe("none");
+      expect(getTraditionalHalfBirthday(bdayMay)).toBe("none");
+      expect(getTraditionalHalfBirthday(bdayDec)).toBe("none");
     });
   });
 
